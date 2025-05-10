@@ -1,0 +1,33 @@
+from PyQt5 import QtWidgets, QtGui, QtCore
+import sys
+from pymem import Pymem
+from pymem.process import module_from_name
+import time
+from test import SquareOverlay
+
+
+app = QtWidgets.QApplication(sys.argv)
+overlay = SquareOverlay(size=100)
+mem = Pymem("cs.exe")
+
+#hw.dll
+ViewAnglesOffset = 0x108AEC4	#+40 yaw
+
+#client.dll
+xOffset =  0x13E7F4
+zOffset =  0x13E7F0 
+
+overlay.spawn_square(500, 500)
+
+client_module = module_from_name(mem.process_handle, "client.dll").lpBaseOfDll
+hw_module = module_from_name(mem.process_handle, "hw.dll").lpBaseOfDll
+while True:
+    pitch = mem.read_float(hw_module + ViewAnglesOffset)
+    yaw = mem.read_float(hw_module + ViewAnglesOffset + 0x40)
+    x = mem.read_float(client_module + xOffset)
+    z = mem.read_float(client_module + zOffset)
+    overlay.move_square(int(yaw),int(pitch))
+
+    print(pitch, yaw, x, z)
+    time.sleep(1)
+    
