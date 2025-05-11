@@ -1,0 +1,18 @@
+{
+    "localeInfo" : {
+        "sysName" : "en_US",
+        "guiName" : "English"
+    },
+    "strings" : {
+        "menuBack" : "0 - Back",
+
+        "mainMenuTitle" : "Main menu",
+        "mainMenuHint1" : "0-9 select",
+        "mainMenuHint2" : "INSERT show/hide",
+        "mainMenuItem1" : "1. Esp settings",
+        "mainMenuItem2" : "2. AimBot settings",
+        "mainMenuItem3" : "3. Player settings",
+        "mainMenuItem4" : "4. Other settings"
+        
+    }
+}

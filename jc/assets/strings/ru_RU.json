@@ -1,0 +1,18 @@
+{
+    "localeInfo" : {
+        "sysName" : "ru_RU",
+        "guiName" : "Русский (Russian)"
+    },
+    "strings" : {
+        "menuBack" : "0 - Назад",
+
+        "mainMenuTitle" : "Главное меню",
+        "mainMenuHint1" : "0-9 выбор",
+        "mainMenuHint2" : "INSERT показать/скрыть",
+        "mainMenuItem1" : "1. Настройки Esp (WH)",
+        "mainMenuItem2" : "2. Настройки Аимбота",
+        "mainMenuItem3" : "3. Настройки игрока",
+        "mainMenuItem4" : "4. Прочие настройки"
+        
+    }
+}

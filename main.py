@@ -24,7 +24,7 @@ mem = MemoryAccess(
 )
 
 
-ms = MenuSprite()
+menu = MenuSprite("en_US", window.main_list)
 
 clock = pygame.time.Clock()
 
@@ -73,7 +73,7 @@ def world_to_screen(px, py, pz, yaw, pitch, ox, oy, oz, screen_width, screen_hei
     rot_z = dy * sin_pitch + rot_z * cos_pitch
     
     if rot_z <= 0:
-        return None, None, distance  # Объект за игроком, не отображаем
+        return None, None, distance 
     
     fov_scale = 1 / math.tan(fov / 2)
     
@@ -94,6 +94,7 @@ while True:
     mem.update()
     window.esp_list = pygame.sprite.Group()
     width, height, left, top = window.get_sizes(window.get_target_window())
+    
     for entity in mem.entities_list:
         boxpos = world_to_screen(
             mem.local_player_x,

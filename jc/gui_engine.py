@@ -11,10 +11,10 @@ class mainWindow:
         self.main_list = pygame.sprite.Group()
         self.esp_list = pygame.sprite.Group()
         self.Screen = pygame.display.set_mode((100, 100), pygame.NOFRAME | pygame.SRCALPHA | pygame.HWSURFACE)
-        self.Screen, self.Width, self.Height = self._set_window_transparent(self._get_pygame_hwnd(), self.get_target_window())
+        self.Screen, self.Width, self.Height = self.__set_window_transparent(self.__get_pygame_hwnd(), self.get_target_window())
     
     def update(self):
-        self.Screen = self._update_position(self._get_pygame_hwnd(), self.Screen, self.get_target_window())
+        self.Screen = self.__update_position(self.__get_pygame_hwnd(), self.Screen, self.get_target_window())
         self.Screen.fill((0, 0, 0, 0))
         self.main_list.draw(self.Screen)
         self.esp_list.draw(self.Screen)
@@ -30,7 +30,7 @@ class mainWindow:
         window = gw.getWindowsWithTitle(self.cs_title)[0]
         return window
     
-    def _get_pygame_hwnd(self):
+    def __get_pygame_hwnd(self):
         hwnd = pygame.display.get_wm_info()['window']
         return hwnd
     def get_sizes(self, target_window):
@@ -39,7 +39,7 @@ class mainWindow:
         height = bottom - top
         return (width, height, left, top)
 
-    def _set_window_transparent(self, hwnd, target_window):
+    def __set_window_transparent(self, hwnd, target_window):
         width, height, left, top = self.get_sizes(target_window)
         screen = pygame.display.set_mode((width, height), pygame.NOFRAME | pygame.SRCALPHA | pygame.HWSURFACE)
         win32gui.SetWindowPos(hwnd, win32con.HWND_TOPMOST, left, top, width, height, 0)
@@ -48,7 +48,7 @@ class mainWindow:
         win32gui.SetLayeredWindowAttributes(hwnd, 0, 0, win32con.LWA_COLORKEY)
         return screen, width, height
     
-    def _update_position(self, hwnd, screen, target_window):
+    def __update_position(self, hwnd, screen, target_window):
         left, top, right, bottom = target_window.left, target_window.top, target_window.right, target_window.bottom
         width = right - left
         height = bottom - top
